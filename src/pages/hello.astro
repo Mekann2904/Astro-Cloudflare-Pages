@@ -1,13 +1,25 @@
 ---
+import AnimatedBackground from '../components/AnimatedBackground.tsx';
+import CubeScene from '../components/CubeScene.tsx';
+import Counter from '../components/Counter.tsx';
+import '../styles/global.css';
 ---
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>Hello Page</title>
+    <title>Exciting Tech Demo</title>
   </head>
-  <body>
-    <h1>Hello New Page</h1>
-    <p>これは新しく追加されたページです。</p>
-    <p><a href="/">Indexに戻る</a></p>
+  <body class="font-sans bg-gray-900 text-white min-h-screen relative">
+    <div class="absolute inset-0 -z-10">
+      <AnimatedBackground client:load />
+    </div>
+    <main class="flex flex-col items-center justify-center gap-8 py-20">
+      <h1 class="text-4xl sm:text-5xl font-bold">最新技術デモ</h1>
+      <div class="w-64 h-64">
+        <CubeScene client:load />
+      </div>
+      <Counter client:load />
+      <a href="/" class="mt-8 underline text-accent-200">Indexに戻る</a>
+    </main>
   </body>
 </html>
