@@ -1,0 +1,33 @@
+---
+const name = "Mekann";
+import AnimatedBackground from '../components/AnimatedBackground.tsx';
+import Logo3D from '../components/Logo3D.tsx';
+import ThemeToggle from '../components/ThemeToggle.tsx';
+import '../styles/global.css';
+---
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>About - {name}</title>
+  </head>
+  <body class="font-sans antialiased">
+    <div id="animated-background" class="fixed inset-0 z-0 pointer-events-none">
+      <AnimatedBackground client:load />
+    </div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg border-b border-gray-200/30 dark:border-gray-700/30 px-6 py-4 flex justify-between">
+      <a href="/" aria-label="ホーム"><Logo3D width="60px" height="30px" client:load /></a>
+      <ThemeToggle client:load />
+    </header>
+    <main class="min-h-screen flex items-center justify-center pt-24">
+      <div class="bg-white/90 dark:bg-gray-800/90 rounded-xl p-8 shadow-lg max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white">About Me</h1>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          こちらはポートフォリオの別ページです。サイト拡張の例として作成されました。
+        </p>
+        <div class="mt-6 text-center">
+          <a href="/" class="text-accent-500 hover:underline">ホームへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
