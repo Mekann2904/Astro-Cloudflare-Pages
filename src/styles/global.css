@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ダークモード用のCSSカスタムプロパティ */
+:root {
+  --tw-bg-opacity: 1;
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Navigation active state */
+.nav-item.active {
+  @apply bg-accent-600 text-white shadow-md;
+}
+
+.dark .nav-item.active {
+  @apply bg-accent-500 text-white;
+}
+
+/* カスタムスタイル */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 3D変形サポート */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* プロジェクトカード3Dフリップ */
+.project-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* プロジェクトカードのz-index確保 */
+.project-card {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card:hover {
+  z-index: 50;
+}
+
+/* 3D背景フィルター効果 */
+#animated-background {
+  filter: brightness(0.6) saturate(0.7) blur(1px);
+  transition: filter 0.5s ease;
+}
+
+/* ホバー時やフォーカス時の背景強化 */
+body:hover #animated-background {
+  filter: brightness(0.65) saturate(0.75) blur(0.8px);
+}
+
+/* ヒーローセクション領域での追加フィルター */
+#home {
+  position: relative;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+    linear-gradient(135deg, 
+      rgba(139, 92, 246, 0.1) 0%,
+      rgba(0, 0, 0, 0.2) 30%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(139, 92, 246, 0.15) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* テキストエリアの美しい背景 */
+#home .max-w-none::before {
+  content: '';
+  position: absolute;
+  inset: -2rem;
+  background: 
+    linear-gradient(145deg, 
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  border-radius: 2rem;
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
+/* モダンなアニメーション - Tailwind CSS風 */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-12px) rotate(1deg) scale(1.02); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(0deg) scale(1.05); 
+  }
+  75% { 
+    transform: translateY(-8px) rotate(-1deg) scale(1.02); 
+  }
+}
+
+@keyframes float-delayed-1 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-8px) rotate(-0.5deg) scale(1.02); 
+  }
+  50% { 
+    transform: translateY(-15px) rotate(0.5deg) scale(1.03); 
+  }
+  75% { 
+    transform: translateY(-5px) rotate(0deg) scale(1.01); 
+  }
+}
+
+@keyframes float-delayed-2 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-6px) rotate(0.5deg) scale(1.01); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(-0.5deg) scale(1.04); 
+  }
+  75% { 
+    transform: translateY(-3px) rotate(0.2deg) scale(1.02); 
+  }
+}
+
+@keyframes float-delayed-3 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-15px) rotate(-1deg) scale(1.03); 
+  }
+  50% { 
+    transform: translateY(-25px) rotate(0.5deg) scale(1.06); 
+  }
+  75% { 
+    transform: translateY(-10px) rotate(-0.3deg) scale(1.02); 
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(139, 92, 246, 0.1);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.6),
+      0 0 60px rgba(139, 92, 246, 0.2);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed-1 {
+  animation: float-delayed-1 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-delayed-2 {
+  animation: float-delayed-2 9s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-float-delayed-3 {
+  animation: float-delayed-3 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* グラデーション背景アニメーション */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #8b5cf6, #a78bfa, #c4b5fd, #ddd6fe, #8b5cf6);
+  background-size: 400% 400%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* レスポンシブ対応の改善 */
+@media (max-width: 1024px) {
+  nav {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  main {
+    margin-left: 0 !important;
+  }
+  
+  /* モバイル表示時のヒーローセクション調整 */
+  #home {
+    padding-top: 2rem;
+    min-height: auto;
+  }
+  
+  #home .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* テクノロジーカードをモバイル向けに調整 */
+  #home .relative.h-\[500px\] {
+    height: 300px;
+  }
+  
+  /* 統計カードをモバイル向けに調整 */
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+} 
